@@ -24,16 +24,15 @@ class App extends React.Component{
                 <img src="img/nepal.jpg" alt="Background Image" className="background-image"/>
                 <div className="contents">
                     <div className="row">
-                        <div className="col-xs-2"></div>
-                        <div className="col-xs-5">
-                            { this.state.readableDate.split(',')[0] }
-                            <br/>
-                            { this.state.readableDate.split(',')[1] }
+                        <div className="col-xs-offset-2 col-xs-8 text-center">
+                            { nepaliDate}
                         </div>
-                        <div className="col-xs-5">
-                            { nepaliDate.split(',')[0] }
-                            <br/>
-                            { nepaliDate.split(',')[1] }
+                    </div>
+                    <div className="row">
+                        <div className="col-xs-offset-2 col-xs-8 text-center">
+                            <span className="english-date">
+                                { this.state.readableDate }
+                            </span>
                         </div>
                     </div>
                 </div>
