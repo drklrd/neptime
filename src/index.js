@@ -42,12 +42,12 @@ class App extends React.Component{
     renderTime(time){
         const timePartial  = Nepalize.nepalize(`${time.split(':')[0]}:${time.split(':')[1]}`);
         if(time.split(':')[2]=='am'){
-            return `${timePartial} बिहान`;
+            return `अहिले बिहानको ${timePartial} बजेको छ`;
         }else{
             if(time.split(':')[0]>6){
-                return `${timePartial} बेलुका`;
+                return `अहिले बेलुकाको ${timePartial} बजेको छ`;
             }else{
-                return `${timePartial} दिउस`;
+                return `अहिले दिउसको ${timePartial} बजेको छ `;
             }
         }
     }
