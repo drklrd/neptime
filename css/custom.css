@@ -1,0 +1,31 @@
+body{
+	font-family: 'Ubuntu', sans-serif;
+	overflow: hidden;
+	overflow-y: hidden !important; // hide vertical
+	overflow-x: hidden !important; // hide horizontal
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.background-image{
+	-webkit-filter: brightness(50%);
+	filter:brightness(50%);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.contents{
+	width : 100%;
+	position: absolute;
+	top : 20%;
+	color: #ffffff;
+	z-index: 1000;
+	font-size: 70px;
+}
