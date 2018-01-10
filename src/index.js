@@ -1,33 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import Dateutil from 'ad-bs-converter';
 import Moment from 'moment';
+import { tada } from 'react-animations';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Radium, {StyleRoot} from 'radium';
+
+import Nepalize from './lib';
 
 const images = 3;
 const imageIndex = Math.floor(Math.random() * images);
-
-function nepalize(stringNum) {
-    const mapping = {
-        '0': '०',
-        '1': '१',
-        '2': '२',
-        '3': '३',
-        '4': '४',
-        '5': '५',
-        '6': '६',
-        '7': '७',
-        '8': '८',
-        '9': '९',
-        '.' : '.',
-        ',' : ',',
-        ':' : ':'
-    };
-    let nepaliNumEquivalent = "";
-    for (let i = 0; i < stringNum.length; i++) {
-        nepaliNumEquivalent = nepaliNumEquivalent + mapping[stringNum[i]];
+const styles = {
+    tada: {
+        animation: 'x 1s',
+        animationName: Radium.keyframes(tada, 'tada')
     }
-    return (nepaliNumEquivalent);
-}
+};
 
 class App extends React.Component{
 
@@ -53,7 +40,7 @@ class App extends React.Component{
     }
 
     renderTime(time){
-        const timePartial  = nepalize(`${time.split(':')[0]}:${time.split(':')[1]}`);
+        const timePartial  = Nepalize.nepalize(`${time.split(':')[0]}:${time.split(':')[1]}`);
         if(time.split(':')[2]=='am'){
             return `${timePartial} बिहान`;
         }else{
@@ -75,7 +62,11 @@ class App extends React.Component{
                     <div className="row">
                         <div className="col-xs-offset-2 col-xs-8 text-center">
                             <span className="time">
-                                { this.renderTime(this.state.currentTime)}
+                                <StyleRoot>
+                                    <div style={styles.tada}>
+                                        { this.renderTime(this.state.currentTime)}
+                                    </div>
+							    </StyleRoot>
                             </span>
                         </div>
                     </div>
