@@ -61,7 +61,11 @@ class App extends React.Component{
 
 	render(){
 	    const nepaliDateObj = Dateutil.ad2bs(this.state.formattedDate).ne;
-	    const nepaliDate = `${nepaliDateObj.year} साल, ${nepaliDateObj.strMonth} ${nepaliDateObj.day} गते, ${nepaliDateObj.strDayOfWeek} `;
+	    const nepaliDate = {
+	        year : `${nepaliDateObj.year} साल, `,
+            month : `${nepaliDateObj.strMonth} ${nepaliDateObj.day} गते, ` ,
+            day : `${nepaliDateObj.strDayOfWeek} `
+        }
 		return(
 			<div>
                 <img src={`img/nepal${imageIndex}.jpg`} alt="Background Image" className="background-image"/>
@@ -69,7 +73,11 @@ class App extends React.Component{
                     <div className="row ">
                         <div className="col-xs-offset-2 col-xs-8 text-center">
                             <span className="nepali-date">
-                                { nepaliDate}
+                                { nepaliDate.year}
+                                <span className="month-class">
+                                    { nepaliDate.month}
+                                </span>
+                                { nepaliDate.day}
                             </span>
                         </div>
                     </div>
