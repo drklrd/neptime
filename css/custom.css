@@ -12,8 +12,8 @@ body{
 }
 
 .background-image{
-	-webkit-filter: brightness(30%);
-	filter:brightness(30%);
+	-webkit-filter: brightness(50%);
+	filter:brightness(50%);
 }
 
 img {
@@ -38,9 +38,13 @@ img {
 }
 
 .time{
-	font-size : 80px !important;
+	font-size : 180px !important;
+}
+
+.stage{
+	font-size : 60px !important;
 }
 
 .margin-date{
-	margin-top: 50px;
+	margin-top: 80px;
 }
