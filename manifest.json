@@ -12,6 +12,6 @@
 	   "newtab": "newtab.html"
 	},
 	"permissions": [
-		"storage"
+		"history"
 	]
 }

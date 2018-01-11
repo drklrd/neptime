@@ -8,6 +8,7 @@ import Radium, {StyleRoot} from 'radium';
 import Nepalize from './lib';
 
 const images = 3;
+const recentPageToView = 10;
 const imageIndex = Math.floor(Math.random() * images);
 const styles = {
     pulse: {
@@ -15,6 +16,13 @@ const styles = {
         animationName: Radium.keyframes(pulse, 'pulse')
     }
 };
+
+let recentlyVisitedSites;
+
+chrome.history.search({text: '', maxResults: recentPageToView}, (data)=> {
+    recentlyVisitedSites = data.filter((page)=>page.title);
+    ReactDOM.render(<App/>,document.getElementById("app"));
+});
 
 class App extends React.Component{
 
@@ -65,7 +73,17 @@ class App extends React.Component{
 	        year : `${nepaliDateObj.year} साल, `,
             month : `${nepaliDateObj.strMonth} ${nepaliDateObj.day} गते, ` ,
             day : `${nepaliDateObj.strDayOfWeek} `
-        }
+        };
+	    const recentPages = recentlyVisitedSites.map((page,index)=>{
+	        return(
+                <div className="col-xs-2 page" key={index}>
+                    <a href={page.url} target="_blank">
+                        { page.title }
+                    </a>
+
+                </div>
+            );
+        });
 		return(
 			<div>
                 <img src={`img/nepal${imageIndex}.jpg`} alt="Background Image" className="background-image"/>
@@ -106,10 +124,19 @@ class App extends React.Component{
                             </span>
                         </div>
                     </div>
+                    <div className="row margin-pages ">
+
+                        <div className="col-xs-offset-1 col-xs-10">
+                            <span className="recently">
+                                हालसालै हेरिएका पृस्ठहरु
+                            </span>
+                            <br/>
+                            { recentPages }
+                        </div>
+                    </div>
                 </div>
+
 			</div>
 		)
 	}
 }
-
-ReactDOM.render(<App/>,document.getElementById("app"));

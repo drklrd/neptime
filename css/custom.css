@@ -24,7 +24,7 @@ img {
 .contents{
 	width : 100%;
 	position: absolute;
-	top : 10%;
+	top : 5%;
 	color: #ffffff;
 	z-index: 1000;
 }
@@ -47,4 +47,35 @@ img {
 
 .margin-date{
 	margin-top: 80px;
+}
+
+.margin-pages{
+	margin-top: 150px;
+}
+
+.page{
+	padding : 8px;
+	background-color: rgba(255,255,255,0.2);
+	margin : 10px;
+	text-overflow: ellipsis;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	cursor: pointer;
+}
+
+.page:hover{
+	background-color: rgba(255,255,255,0.5);
+}
+
+a{
+	text-decoration: none !important;
+	color : #ffffff;
+}
+
+
+.recently{
+	font-size: 20px;
+	border-bottom: 1px solid #ffffff;
+	padding-bottom: 3px;
 }
