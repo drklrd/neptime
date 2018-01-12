@@ -1,6 +1,6 @@
 import Dateutil from 'ad-bs-converter';
 import Moment from 'moment';
-import { pulse } from 'react-animations';
+import * as ReactAnimations  from 'react-animations';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Radium, {StyleRoot} from 'radium';
@@ -10,12 +10,12 @@ import Nepalize from './lib';
 const images = 3;
 const recentPageToView = 10;
 const imageIndex = Math.floor(Math.random() * images);
-const styles = {
-    pulse: {
+const styles = (style)=>{
+    return {
         animation: 'x 1s',
-        animationName: Radium.keyframes(pulse, 'pulse')
+        animationName: Radium.keyframes(ReactAnimations[style], style)
     }
-};
+}
 
 let recentlyVisitedSites;
 
@@ -110,7 +110,7 @@ class App extends React.Component{
                         <div className="col-xs-offset-2 col-xs-8 text-center">
                             <span>
                                 <StyleRoot>
-                                    <div style={styles.pulse}>
+                                    <div style={styles('pulse')}>
                                         <span className="stage">
                                             <i className={this.renderTime(this.state.currentTime)['icon']}></i> &nbsp;
                                             { this.renderTime(this.state.currentTime)['stage']}
@@ -125,13 +125,16 @@ class App extends React.Component{
                         </div>
                     </div>
                     <div className="row margin-pages ">
-
                         <div className="col-xs-offset-1 col-xs-10">
-                            <span className="recently">
-                                हालसालै हेरिएका पृस्ठहरु
-                            </span>
-                            <br/>
-                            { recentPages }
+                            <StyleRoot>
+                                <div style={styles('bounceInUp')}>
+                                       <span className="recently">
+                                           हालसालै हेरिएका पृस्ठहरु
+                                        </span>
+                                        <br/>
+                                        { recentPages }
+                                </div>
+                            </StyleRoot>
                         </div>
                     </div>
                 </div>
