@@ -60,7 +60,7 @@ class App extends React.Component{
                 timeToReturn['stage'] = 'बेलुकाको';
                 timeToReturn['icon'] = 'wi wi-moonrise';
             }else{
-                timeToReturn['stage'] = 'दिउसको';
+                timeToReturn['stage'] = 'दिउँसको';
                 timeToReturn['icon'] = 'wi wi-day-sunny';
             }
         }
