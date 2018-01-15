@@ -56,7 +56,7 @@ class App extends React.Component{
             timeToReturn['stage'] = 'बिहानको';
             timeToReturn['icon'] = 'wi wi-sunrise';
         }else{
-            if(time.split(':')[0]>6){
+            if(time.split(':')[0]>6 && time.split(':')[0] !=12){
                 timeToReturn['stage'] = 'बेलुकाको';
                 timeToReturn['icon'] = 'wi wi-moonrise';
             }else{
