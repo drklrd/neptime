@@ -4,6 +4,9 @@ import * as ReactAnimations  from 'react-animations';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Radium, {StyleRoot} from 'radium';
+import ReactSlick from 'react-slick';
+
+import Todo from './todo';
 
 import Nepalize from './lib';
 
@@ -15,7 +18,15 @@ const styles = (style)=>{
         animation: 'x 1s',
         animationName: Radium.keyframes(ReactAnimations[style], style)
     }
-}
+};
+const slickSettings = {
+    dots: true,
+    infinite: true,
+    arrows : true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+};
 
 let recentlyVisitedSites;
 
@@ -96,42 +107,56 @@ class App extends React.Component{
 			<div>
                 <img src={`img/nepal${imageIndex}.jpg`} alt="Background Image" className="background-image"/>
                 <div className="contents">
-                    <div className="row ">
-                        <div className="col-xs-offset-2 col-xs-8 text-center">
-                            <span className="nepali-date">
-                                { nepaliDate.year}
-                                <span className="month-class">
-                                    { nepaliDate.month}
-                                </span>
-                                { nepaliDate.day}
-                            </span>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-xs-offset-2 col-xs-8 text-center">
-                            <span className="english-date">
-                                { this.state.readableDate }
-                            </span>
-                        </div>
-                    </div>
-                    <div className="row margin-date">
-                        <div className="col-xs-offset-2 col-xs-8 text-center">
-                            <span>
-                                <StyleRoot>
-                                    <div style={styles('pulse')}>
-                                        <span className="stage">
-                                            <i className={this.renderTime(this.state.currentTime)['icon']}></i> &nbsp;
-                                            { this.renderTime(this.state.currentTime)['stage']}
+                    <div className="slider">
+                        <ReactSlick {...slickSettings} >
+                            <div>
+                                <div className="row ">
+                                    <div className="col-xs-offset-2 col-xs-8 text-center">
+                                    <span className="nepali-date">
+                                        { nepaliDate.year}
+                                        <span className="month-class">
+                                            { nepaliDate.month}
                                         </span>
-                                        <br/>
-                                        <span className="time">
-                                            { this.renderTime(this.state.currentTime)['time']}
-                                        </span>
+                                        { nepaliDate.day}
+                                    </span>
                                     </div>
-							    </StyleRoot>
-                            </span>
-                        </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-xs-offset-2 col-xs-8 text-center">
+                                    <span className="english-date">
+                                        { this.state.readableDate }
+                                    </span>
+                                    </div>
+                                </div>
+                                <div className="row margin-date">
+                                    <div className="col-xs-offset-2 col-xs-8 text-center">
+                                    <span>
+                                        <StyleRoot>
+                                            <div style={styles('pulse')}>
+                                                <span className="stage">
+                                                    <i className={this.renderTime(this.state.currentTime)['icon']}></i> &nbsp;
+                                                    { this.renderTime(this.state.currentTime)['stage']}
+                                                </span>
+                                                <br/>
+                                                <span className="time">
+                                                    { this.renderTime(this.state.currentTime)['time']}
+                                                </span>
+                                            </div>
+                                        </StyleRoot>
+                                    </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div className="row">
+                                    <div className="col-xs-offset-2 col-xs-8 text-center">
+                                        <Todo />
+                                    </div>
+                                </div>
+                            </div>
+                        </ReactSlick>
                     </div>
+
                     <div className="row margin-pages ">
                         <div className="col-xs-offset-1 col-xs-10">
                             <StyleRoot>
@@ -146,7 +171,6 @@ class App extends React.Component{
                         </div>
                     </div>
                 </div>
-
 			</div>
 		)
 	}
