@@ -12,6 +12,7 @@
 	   "newtab": "newtab.html"
 	},
 	"permissions": [
-		"history"
+		// "history",
+		"bookmarks"
 	]
 }

@@ -19,8 +19,16 @@ const styles = (style)=>{
 
 let recentlyVisitedSites;
 
-chrome.history.search({text: '', maxResults: recentPageToView}, (data)=> {
-    recentlyVisitedSites = data.filter((page)=>page.title);
+// chrome.history.search({text: '', maxResults: recentPageToView}, (data)=> {
+//     recentlyVisitedSites = data.filter((page)=>page.title);
+//     ReactDOM.render(<App/>,document.getElementById("app"));
+// });
+
+chrome.bookmarks.search({},(data)=>{
+    data.sort((a,b)=>{
+        return b.dateAdded-a.dateAdded;
+    });
+    recentlyVisitedSites = data.slice(0,recentPageToView).filter((page)=>page.title);
     ReactDOM.render(<App/>,document.getElementById("app"));
 });
 
@@ -129,7 +137,7 @@ class App extends React.Component{
                             <StyleRoot>
                                 <div style={styles('bounceInUp')}>
                                        <span className="recently">
-                                           हालसालै हेरिएका पृस्ठहरु
+                                           हालसालै बुकमार्क गरिएका पृस्ठहरु
                                         </span>
                                         <br/>
                                         { recentPages }
