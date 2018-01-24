@@ -13,6 +13,7 @@ import Nepalize from './lib';
 const images = 3;
 const recentPageToView = 10;
 const imageIndex = Math.floor(Math.random() * images);
+
 const styles = (style)=>{
     return {
         animation: 'x 1s',
@@ -25,7 +26,7 @@ const slickSettings = {
     arrows : true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1,
+    slidesToScroll: 1
 };
 
 let recentlyVisitedSites;
