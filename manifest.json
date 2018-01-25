@@ -12,7 +12,7 @@
 	   "newtab": "newtab.html"
 	},
 	"permissions": [
-		// "history",
-		"bookmarks"
+		"bookmarks",
+		"storage"
 	]
 }

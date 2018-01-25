@@ -20,6 +20,7 @@ const styles = (style)=>{
         animationName: Radium.keyframes(ReactAnimations[style], style)
     }
 };
+
 const slickSettings = {
     dots: true,
     infinite: true,
@@ -30,11 +31,6 @@ const slickSettings = {
 };
 
 let recentlyVisitedSites;
-
-// chrome.history.search({text: '', maxResults: recentPageToView}, (data)=> {
-//     recentlyVisitedSites = data.filter((page)=>page.title);
-//     ReactDOM.render(<App/>,document.getElementById("app"));
-// });
 
 chrome.bookmarks.search({},(data)=>{
     data.sort((a,b)=>{

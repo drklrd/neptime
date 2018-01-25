@@ -94,6 +94,8 @@ a{
 	background-color: transparent;
 	padding : 5px;
 	color : #ffffff;
+	font-size: 20px;
+	outline: none;
 }
 
 .slick-dots li button:before {
@@ -123,4 +125,9 @@ a{
 
 .to-done{
 	text-decoration : line-through;
+}
+
+::placeholder {
+	color: #ffffff;
+	opacity : 0.7;
 }
