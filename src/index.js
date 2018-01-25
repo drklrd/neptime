@@ -104,11 +104,11 @@ class App extends React.Component{
 			<div>
                 <img src={`img/nepal${imageIndex}.jpg`} alt="Background Image" className="background-image"/>
                 <div className="contents">
-                    <div className="slider">
-                        <ReactSlick {...slickSettings} >
-                            <div>
+                    <div  className="slider">
+                        <ReactSlick  {...slickSettings} >
+                            <div id="test" ref="test">
                                 <div className="row ">
-                                    <div className="col-xs-offset-2 col-xs-8 text-center">
+                                    <div   className="col-xs-offset-2 col-xs-8 text-center">
                                     <span className="nepali-date">
                                         { nepaliDate.year}
                                         <span className="month-class">
@@ -153,7 +153,6 @@ class App extends React.Component{
                             </div>
                         </ReactSlick>
                     </div>
-
                     <div className="row margin-pages ">
                         <div className="col-xs-offset-1 col-xs-10">
                             <StyleRoot>

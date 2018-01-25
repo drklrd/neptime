@@ -53,7 +53,7 @@ class Todo extends React.Component{
     }
 
     renderToDos(){
-        const totosTemlate = this.state.todos.map((todo,index)=>{
+        const todosTemlate = this.state.todos.map((todo,index)=>{
             return(
                 <div className="row todo col-xs-offset-3" key={index}>
                     <div className="col-xs-1">
@@ -68,7 +68,7 @@ class Todo extends React.Component{
                 </div>
             );
         });
-        return totosTemlate;
+        return todosTemlate;
     }
 
     _newTaskAdded(e){
