@@ -34,8 +34,8 @@ img {
 	/*top : 5%;*/
 	/*margin-left : 15%;*/
 	/*width: 70%;*/
-	padding-left : 10%;
-	padding-right : 10%;
+	padding-left : 20%;
+	padding-right : 20%;
 }
 
 .english-date{
@@ -98,4 +98,29 @@ a{
 
 .slick-dots li button:before {
 	color: #ffffff !important;
+}
+
+.align-left{
+	text-align: left;
+}
+
+.todo {
+	margin-top : 20px;
+}
+
+.todos-list{
+	margin-top: 30px;
+	font-size: 20px;
+}
+
+.pointer{
+	cursor: pointer;
+}
+
+.circle:before{
+	content:'a';
+}
+
+.to-done{
+	text-decoration : line-through;
 }
