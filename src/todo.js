@@ -1,3 +1,6 @@
+import { getToDos,addToDo } from './actions/actions';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import React from 'react';
 
 class Todo extends React.Component{
@@ -14,11 +17,8 @@ class Todo extends React.Component{
     }
 
     _updateTodos(todos){
-        chrome.storage.local.set({
-            todos
-        });
+        this.props.addToDo(todos);
         this.setState({
-            todos,
             newtask : ''
         });
     }
@@ -30,30 +30,25 @@ class Todo extends React.Component{
     }
 
     taskDone(index){
-        const todos = this.state.todos;
+        const todos = this.props.todos;
         todos[index]['done'] = !todos[index]['done'];
         this._updateTodos(todos);
     }
 
     _taskDelete(index){
-        const todos = this.state.todos;
+        const todos = this.props.todos;
         todos.splice(index,1);
         this._updateTodos(todos);
 
     }
 
     componentWillMount(){
-        chrome.storage.local.get('todos',(result)=>{
-            if(result.todos){
-                this.setState({
-                    todos : result.todos
-                })
-            }
-        });
+        this.props.getToDos();
     }
 
     renderToDos(){
-        const todosTemlate = this.state.todos.map((todo,index)=>{
+
+        const todosTemlate = this.props.todos.map((todo,index)=>{
             return(
                 <div className="row todo col-xs-offset-3" key={index}>
                     <div className="col-xs-1">
@@ -73,7 +68,7 @@ class Todo extends React.Component{
 
     _newTaskAdded(e){
         if (e.key === 'Enter') {
-            const todos = this.state.todos;
+            const todos = this.props.todos;
             todos.push({
                 todo : e.target.value,
                 done : false
@@ -83,7 +78,7 @@ class Todo extends React.Component{
     }
 
     render(){
-        const totosTemlate = this.state.todos.length ? this.renderToDos() : '';
+        const totosTemlate = this.props.todos.length ? this.renderToDos() : '';
         return(
             <div>
                 <h2>आज भोली गर्नु पर्ने केहि कार्यहरु भए यहाँ टिप्नसक्नुहुनेछ </h2>
@@ -101,4 +96,14 @@ class Todo extends React.Component{
     }
 }
 
-export default Todo;
+
+function mapStateToProps(state) {
+    return {
+        todos: state.todos
+    };
+}
+
+export default connect(
+    mapStateToProps,
+    { getToDos,addToDo }
+)(Todo);
