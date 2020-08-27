@@ -1,5 +1,5 @@
 export default {
-    nepalize : (stringNum)=>{
+    nepalize: (stringNum) => {
         const mapping = {
             '0': '०',
             '1': '१',
@@ -11,9 +11,9 @@ export default {
             '7': '७',
             '8': '८',
             '9': '९',
-            '.' : '.',
-            ',' : ',',
-            ':' : ':'
+            '.': '.',
+            ',': ',',
+            ':': ':'
         };
         let nepaliNumEquivalent = "";
         for (let i = 0; i < stringNum.length; i++) {

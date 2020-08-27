@@ -9,6 +9,6 @@ const store = configureStore();
 
 ReactDOM.render(
     <Provider store={store}>
-        <Neptime/>
-    </Provider> ,
+        <Neptime />
+    </Provider>,
     document.getElementById("app"));
